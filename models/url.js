@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const recordSchema = new Schema({
+const urlSchema = new Schema({
   original: {
     type: String,
     required: true
@@ -12,7 +12,7 @@ const recordSchema = new Schema({
 })
 
 
-module.exports = mongoose.model('Record', recordSchema)
+module.exports = mongoose.model('URL', urlSchema)
 
 
 
