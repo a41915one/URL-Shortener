@@ -1,1 +1,46 @@
-<h2>Oshi no ko sai ko de su !!!</h2>
+<div class="container-fluid">
+  <h2>URL Shortener</h2>
+  <div class="main-pic">
+    <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png" alt="">
+  </div>
+
+  {{#if shortURL}}
+
+  <div>
+    <form action="/" method="post">
+      <div class="input-group mb-3">
+        <input type="url" name="url" placeholder="Input URL here" aria-label="Input URL here">
+        <button class="shorten" type="submit">Shorten</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="result">
+    <h3>幻術施展成功，網址已變形縮短</h3>
+    {{!-- <a id="generatedURL" href="{{origin}}">{{SERVER}}{{shortURL}}</a> --}}
+    <p id="pastedURL">{{origin}}</p>
+    <p id="generatedURL">{{SERVER}}{{shortURL}}</p>
+  </div>
+  <button id="copybtn" class="btn btn-outline-secondary" onclick="copy()">Copy</button>
+
+  <script>
+    function copy() {
+      const URL = document.getElementById("generatedURL")
+      navigator.clipboard.writeText(URL.innerText)
+    }
+  </script>
+
+  {{else}}
+  <div>
+    <form action="/" method="post">
+      <div class="input-group mb-3">
+        <input type="url" name="url" placeholder="Input URL here" aria-label="Input URL here">
+        <button class="shorten" type="submit">Shorten</button>
+      </div>
+    </form>
+  </div>
+
+  {{/if}}
+
+
+</div>
