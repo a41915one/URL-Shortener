@@ -1,12 +1,13 @@
-<div class="container-fluid">
+<div class="container-fluid text-center">
   <h2>URL Shortener</h2>
-  <div class="main-pic">
-    <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png" alt="">
+  <div class="main-pic mt-5 mb-5">
+    <img class="width: 50px"
+      src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png" alt="">
   </div>
 
-  {{#if shortURL}}
+  {{#if shorten}}
 
-  <div>
+  <div class="text-center">
     <form action="/" method="post">
       <div class="input-group mb-3">
         <input type="url" name="url" placeholder="Input URL here" aria-label="Input URL here">
@@ -16,10 +17,11 @@
   </div>
 
   <div class="result">
-    <h3>幻術施展成功，網址已變形縮短</h3>
-    {{!-- <a id="generatedURL" href="{{origin}}">{{SERVER}}{{shortURL}}</a> --}}
-    <p id="pastedURL">{{origin}}</p>
-    <p id="generatedURL">{{SERVER}}{{shortURL}}</p>
+    <h3>網址已成功縮短</h3>
+    <span class="input-group-text">原網址</span>
+    <p id="pastedURL">{{original}}</p>
+    <span class="input-group-text">縮短網址</span>
+    <p id="generatedURL">{{SERVER}}{{shorten}}</p>
   </div>
   <button id="copybtn" class="btn btn-outline-secondary" onclick="copy()">Copy</button>
 
@@ -31,7 +33,7 @@
   </script>
 
   {{else}}
-  <div>
+  <div class="text-center">
     <form action="/" method="post">
       <div class="input-group mb-3">
         <input type="url" name="url" placeholder="Input URL here" aria-label="Input URL here">
