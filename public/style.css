@@ -1,0 +1,46 @@
+.container-fluid {
+  text-align: center;
+  /* 將內容置中 */
+}
+
+.input-group {
+  text-align: center;
+}
+
+.input-group-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-pic img {
+  width: 250px;
+  /* 設定圖片的寬度 */
+  display: block;
+  /* 調整圖片的顯示方式為區塊元素 */
+  margin: 0 auto;
+  /* 水平置中圖片 */
+}
+
+.result {
+  text-align: center;
+  /* 將結果區塊置中 */
+}
+
+
+.input-block {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+#success-text {
+  font-weight: bold;
+}
+
+#copybtn {
+  display: block;
+  /* 調整複製按鈕的顯示方式為區塊元素 */
+  margin: 0 auto;
+  /* 水平置中複製按鈕 */
+}

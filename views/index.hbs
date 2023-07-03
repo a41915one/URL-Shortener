@@ -7,40 +7,62 @@
 
   {{#if shorten}}
 
-  <div class="text-center">
-    <form action="/" method="post">
+  <div class="input-block">
+    <form action="/" method="post" onsubmit="return validateForm()">
       <div class="input-group mb-3">
-        <input type="url" name="url" placeholder="Input URL here" aria-label="Input URL here">
+        <input type="url" name="url" id="urlInput" placeholder="Input URL here" aria-label="Input URL here">
         <button class="shorten" type="submit">Shorten</button>
       </div>
     </form>
   </div>
 
   <div class="result">
-    <h3>網址已成功縮短</h3>
-    <span class="input-group-text">原網址</span>
-    <p id="pastedURL">{{original}}</p>
-    <span class="input-group-text">縮短網址</span>
-    <p id="generatedURL">{{SERVER}}{{shorten}}</p>
+    <h3 id="success-text">網址已成功縮短！</h3>
+    <div class="result-block mt-5">
+      <h4 id="original-URL-text">原網址</h4>
+      <div class="text-center">
+        <p class="input-group-text" id="pastedURL">{{original}}</p>
+      </div>
+      <h4 id="shorten-URL-text">縮短網址</h4>
+      <div class="text-center">
+        <p class="input-group-text" id="generatedURL">{{SERVER}}{{shorten}}</p>
+      </div>
+    </div>
+    <button id="copybtn" class="btn btn-outline-secondary" onclick="copy()">Copy</button>
   </div>
-  <button id="copybtn" class="btn btn-outline-secondary" onclick="copy()">Copy</button>
 
   <script>
     function copy() {
       const URL = document.getElementById("generatedURL")
-      navigator.clipboard.writeText(URL.innerText)
+      navigator.clipboard.writeText(URL.innerText);
+      alert("成功複製網址")
     }
   </script>
 
+
   {{else}}
-  <div class="text-center">
-    <form action="/" method="post">
+  <div class="input-block">
+    <form action="/" method="post" onsubmit="return validateForm()">
       <div class="input-group mb-3">
-        <input type="url" name="url" placeholder="Input URL here" aria-label="Input URL here">
+        <input type="url" name="url" id="urlInput" placeholder="Input URL here" aria-label="Input URL here">
         <button class="shorten" type="submit">Shorten</button>
       </div>
     </form>
   </div>
+
+  <script>
+    function validateForm() {
+      const urlInput = document.getElementById("urlInput").value;
+
+      if (urlInput === "") {
+        alert("請輸入網址 !!!");
+        return false;
+      }
+
+      return true;
+    }
+
+  </script>
 
   {{/if}}
 
