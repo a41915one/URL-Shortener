@@ -7,7 +7,7 @@ function generateShortCode() {
     const chosenChar = Base_62_Char[randomIndex]
     shortCode += chosenChar
   }
-  console.log(shortCode)
+  console.log(`function generateShortCode: ${shortCode} `)
   return shortCode;
 }
 

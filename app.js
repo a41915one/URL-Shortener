@@ -42,13 +42,15 @@ app.post('/', (req, res) => {
     .then(data => {
       // 確保沒有一樣的data才繼續創造
       if (!data) {
+        console.log(`資料庫內無相關資料，會產生新資料存到資料庫`);
         return URL.create({ shorten: shorten, original: req.body.url });
-      }
-      console.log(data);
+      } 
       //如果有return data,則會在整個.then()鏈繼續使用，若沒有，怎僅限於在這個.then()中存在
+      console.log(`已經有相同筆資料，將會採用原資料： ${data}`);
       return data;
     })
-    //如果在URL model中有找到一樣的資料，則不創造新資料，直接渲染原網頁
+    
+    //輸入相同網址時，產生一樣的縮址。如果在URL model中有找到一樣的資料，則不創造新資料，直接以相同的資料庫資料渲染原網頁
     .then(data => {
       res.render('index', {
         SERVER: SERVER,
@@ -61,11 +63,11 @@ app.post('/', (req, res) => {
 
 app.get('/:shorten', (req, res) => {
   const shortCode = req.params.shorten;
-  console.log(shortCode);
+  console.log(`網址列的shortCode為 ${shortCode}`);
   if (shortCode.length == 5) {
     URL.findOne({ shorten: shortCode })
       .then(data => {
-        // console.log(data);
+        //console.log(data);
         if (data) {
           res.redirect(data.original);
         } else {
